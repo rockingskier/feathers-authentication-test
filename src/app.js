@@ -23,7 +23,7 @@ app.use(bodyParser.urlencoded({ extended: true }))  // For reading JWTokens
   .use('/authentication', bodyParser.json())  // For local login details
   .configure(authentication({
     secret: process.env.AUTH_SECRET,
-    // successRedirect: '/back-to-the-frontend',  // This does not work
+    successRedirect: '/users',  // This does not work
   }))
   .configure(local({
     usernameField: 'username',
@@ -38,7 +38,7 @@ if (process.env.OAUTH__FACEBOOK__ID && process.env.OAUTH__FACEBOOK__SECRET) {
       clientID: process.env.OAUTH__FACEBOOK__ID,
       clientSecret: process.env.OAUTH__FACEBOOK__SECRET,
       scope: ['public_profile', 'email'],
-      // successRedirect: '/back-to-the-frontend',  // This does not work
+      successRedirect: '/users',  // This does not work
     }));
 } 
    
